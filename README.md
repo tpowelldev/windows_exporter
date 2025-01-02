@@ -60,6 +60,7 @@ Name     | Description | Enabled by default
 [time](docs/collector.time.md) | Windows Time Service |
 [udp](docs/collector.udp.md) | UDP connections |
 [update](docs/collector.update.md) | Windows Update Service |
+[vmware_blast](docs/collector.vmware_blast.md) | VMware Blast session metrics |
 [vmware](docs/collector.vmware.md) | Performance counters installed by the Vmware Guest agent |
 
 See the linked documentation on each collector for more information on reported metrics, configuration settings and usage examples.

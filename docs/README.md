@@ -48,4 +48,5 @@ This directory contains documentation of the collectors in the windows_exporter,
 - [`time`](collector.time.md)
 - [`udp`](collector.udp.md)
 - [`update`](collector.update.md)
+- [`vmware_blast`](collector.vmware_blast.md)
 - [`vmware`](collector.vmware.md)
