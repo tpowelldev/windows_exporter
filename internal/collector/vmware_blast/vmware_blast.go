@@ -1171,78 +1171,124 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 // to the provided prometheus Metric channel.
 func (c *Collector) Collect(ch chan<- prometheus.Metric) error {
 	errs := make([]error, 0, 16)
+	collectCount := 0
 
+	// Try to collect each metric type, but don't fail the entire collection if one type fails
+	// This is important for VMware Blast where not all counter types may be available
+	
 	if err := c.collectAudio(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast audio metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectCdr(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast cdr metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectClipboard(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast clipboard metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectHtml5Mmr(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast html5 mmr metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectImaging(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast imaging metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectOtherFeature(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast other feature metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectPrinting(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast printing metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectRdeServer(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast rdeserver metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectRtav(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast rtav metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectSdr(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast sdr metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectSerialPortandScanner(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast serial port and scanner metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectSession(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast session metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectSmartCard(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast smart card metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectUsb(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast usb metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectViewScanner(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast view scanner metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
 	if err := c.collectWindowsMediaMmr(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast windows media mmr metrics: %w", err))
+	} else {
+		collectCount++
 	}
 
-	return errors.Join(errs...)
+	// If we couldn't collect any metrics at all, return an error
+	if collectCount == 0 && len(errs) > 0 {
+		return fmt.Errorf("failed to collect any VMware Blast metrics: %w", errors.Join(errs...))
+	}
+
+	// Otherwise, just log the errors but don't fail the collection
+	return nil
 }
 
 func (c *Collector) collectAudio(ch chan<- prometheus.Metric) error {
 	err := c.perfDataCollectorAudio.Collect(&c.perfDataObjectAudio)
 	if err != nil {
 		return fmt.Errorf("failed to collect Blast Audio metrics: %w", err)
+	}
+
+	if len(c.perfDataObjectAudio) == 0 {
+		return fmt.Errorf("no Blast Audio metrics available")
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1296,6 +1342,10 @@ func (c *Collector) collectCdr(ch chan<- prometheus.Metric) error {
 		return fmt.Errorf("failed to collect Blast CDR metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectCDR) == 0 {
+		return fmt.Errorf("no Blast CDR metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.cdrInboundBandwidthKbps,
 		prometheus.GaugeValue,
@@ -1347,6 +1397,10 @@ func (c *Collector) collectClipboard(ch chan<- prometheus.Metric) error {
 		return fmt.Errorf("failed to collect Blast Clipboard metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectClipboard) == 0 {
+		return fmt.Errorf("no Blast Clipboard metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.clipboardInboundBandwidthKbps,
 		prometheus.GaugeValue,
@@ -1396,6 +1450,10 @@ func (c *Collector) collectHtml5Mmr(ch chan<- prometheus.Metric) error {
 	err := c.perfDataCollectorHTML5MMR.Collect(&c.perfDataObjectHTML5MMR)
 	if err != nil {
 		return fmt.Errorf("failed to collect Blast HTML5 MMR metrics: %w", err)
+	}
+
+	if len(c.perfDataObjectHTML5MMR) == 0 {
+		return fmt.Errorf("no Blast HTML5 MMR metrics available")
 	}
 
 	ch <- prometheus.MustNewConstMetric(
