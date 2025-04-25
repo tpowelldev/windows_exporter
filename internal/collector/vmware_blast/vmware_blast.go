@@ -1507,6 +1507,10 @@ func (c *Collector) collectImaging(ch chan<- prometheus.Metric) error {
 		return fmt.Errorf("failed to collect Blast Imaging metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectImaging) == 0 {
+		return fmt.Errorf("no Blast Imaging metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.imagingDirtyFramesPerSecond,
 		prometheus.GaugeValue,
@@ -1612,6 +1616,10 @@ func (c *Collector) collectOtherFeature(ch chan<- prometheus.Metric) error {
 		return fmt.Errorf("failed to collect Blast Other Feature metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectOtherFeature) == 0 {
+		return fmt.Errorf("no Blast Other Feature metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.otherFeatureInboundBandwidthKbps,
 		prometheus.GaugeValue,
@@ -1661,6 +1669,10 @@ func (c *Collector) collectPrinting(ch chan<- prometheus.Metric) error {
 	err := c.perfDataCollectorPrinting.Collect(&c.perfDataObjectPrinting)
 	if err != nil {
 		return fmt.Errorf("failed to collect Blast Printing metrics: %w", err)
+	}
+
+	if len(c.perfDataObjectPrinting) == 0 {
+		return fmt.Errorf("no Blast Printing metrics available")
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1714,6 +1726,10 @@ func (c *Collector) collectRdeServer(ch chan<- prometheus.Metric) error {
 		return fmt.Errorf("failed to collect Blast RdeServer metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectRdeServer) == 0 {
+		return fmt.Errorf("no Blast RdeServer metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.rdeServerInboundBandwidthKbps,
 		prometheus.GaugeValue,
@@ -1763,6 +1779,10 @@ func (c *Collector) collectRtav(ch chan<- prometheus.Metric) error {
 	err := c.perfDataCollectorRTAV.Collect(&c.perfDataObjectRTAV)
 	if err != nil {
 		return fmt.Errorf("failed to collect Blast RTAV metrics: %w", err)
+	}
+
+	if len(c.perfDataObjectRTAV) == 0 {
+		return fmt.Errorf("no Blast RTAV metrics available")
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1816,6 +1836,10 @@ func (c *Collector) collectSdr(ch chan<- prometheus.Metric) error {
 		return fmt.Errorf("failed to collect Blast SDR metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectSDR) == 0 {
+		return fmt.Errorf("no Blast SDR metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.sdrInboundBandwidthKbps,
 		prometheus.GaugeValue,
@@ -1867,6 +1891,10 @@ func (c *Collector) collectSerialPortandScanner(ch chan<- prometheus.Metric) err
 		return fmt.Errorf("failed to collect Blast Serial Port and Scanner metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectSerialPortandScanner) == 0 {
+		return fmt.Errorf("no Blast Serial Port and Scanner metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.serialPortandScannerInboundBandwidthKbps,
 		prometheus.GaugeValue,
@@ -1916,6 +1944,10 @@ func (c *Collector) collectSession(ch chan<- prometheus.Metric) error {
 	err := c.perfDataCollectorSession.Collect(&c.perfDataObjectSession)
 	if err != nil {
 		return fmt.Errorf("failed to collect Blast Session metrics: %w", err)
+	}
+
+	if len(c.perfDataObjectSession) == 0 {
+		return fmt.Errorf("no Blast Session metrics available")
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -2029,6 +2061,10 @@ func (c *Collector) collectSmartCard(ch chan<- prometheus.Metric) error {
 		return fmt.Errorf("failed to collect Blast Smart Card metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectSmartCard) == 0 {
+		return fmt.Errorf("no Blast Smart Card metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.smartCardInboundBandwidthKbps,
 		prometheus.GaugeValue,
@@ -2078,6 +2114,10 @@ func (c *Collector) collectUsb(ch chan<- prometheus.Metric) error {
 	err := c.perfDataCollectorUSB.Collect(&c.perfDataObjectUSB)
 	if err != nil {
 		return fmt.Errorf("failed to collect Blast USB metrics: %w", err)
+	}
+
+	if len(c.perfDataObjectUSB) == 0 {
+		return fmt.Errorf("no Blast USB metrics available")
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -2131,6 +2171,10 @@ func (c *Collector) collectViewScanner(ch chan<- prometheus.Metric) error {
 		return fmt.Errorf("failed to collect Blast View Scanner metrics: %w", err)
 	}
 
+	if len(c.perfDataObjectViewScanner) == 0 {
+		return fmt.Errorf("no Blast View Scanner metrics available")
+	}
+
 	ch <- prometheus.MustNewConstMetric(
 		c.viewScannerInboundBandwidthKbps,
 		prometheus.GaugeValue,
@@ -2180,6 +2224,10 @@ func (c *Collector) collectWindowsMediaMmr(ch chan<- prometheus.Metric) error {
 	err := c.perfDataCollectorWindowsMediaMMR.Collect(&c.perfDataObjectWindowsMediaMMR)
 	if err != nil {
 		return fmt.Errorf("failed to collect Blast Windows Media MMR metrics: %w", err)
+	}
+
+	if len(c.perfDataObjectWindowsMediaMMR) == 0 {
+		return fmt.Errorf("no Blast Windows Media MMR metrics available")
 	}
 
 	ch <- prometheus.MustNewConstMetric(

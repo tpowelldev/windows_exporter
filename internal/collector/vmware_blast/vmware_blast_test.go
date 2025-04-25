@@ -14,5 +14,10 @@ func BenchmarkCollector(b *testing.B) {
 }
 
 func TestCollector(t *testing.T) {
+	// This test might be skipped if VMware Blast is not installed
+	if testing.Short() {
+		t.Skip("Skipping test in short mode")
+	}
+	
 	testutils.TestCollector(t, vmware_blast.New, nil)
 }
