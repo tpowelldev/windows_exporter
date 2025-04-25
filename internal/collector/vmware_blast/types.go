@@ -46,7 +46,7 @@ type perfDataCounterValuesImaging struct {
 	Dirtyframespersecond  float64 `perfdata:"Dirty frames per second"`   // \VMware Blast Imaging Counters(*)\Dirty frames per second
 	EncoderType           float64 `perfdata:"Encoder Type"`              // \VMware Blast Imaging Counters(*)\Encoder Type
 	FBCRate               float64 `perfdata:"FBC Rate"`                  // \VMware Blast Imaging Counters(*)\FBC Rate
-	Framespersecond       float64 `perfdata:"Frame per second"`          // \VMware Blast Imaging Counters(*)\Frames per second
+	Framespersecond       float64 `perfdata:"Frames per second"`         // \VMware Blast Imaging Counters(*)\Frames per second
 	InboundBandwidthKbps  float64 `perfdata:"Inbound Bandwidth (Kbps)"`  // \VMware Blast Imaging Counters(*)\Inbound Bandwidth (Kbps)
 	OutboundBandwidthKbps float64 `perfdata:"Outbound Bandwidth (Kbps)"` // \VMware Blast Imaging Counters(*)\Outbound Bandwidth (Kbps)
 	OutQueueingtimeus     float64 `perfdata:"Out Queueing time (us)"`    // \VMware Blast Imaging Counters(*)\Out Queueing time (us)
