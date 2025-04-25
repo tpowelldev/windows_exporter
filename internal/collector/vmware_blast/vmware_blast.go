@@ -282,7 +282,7 @@ func (c *Collector) Close() error {
 func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 	var err error
 
-	c.perfDataCollectorAudio, err = pdh.NewCollector[perfDataCounterValuesAudio]("Blast Audio", pdh.InstancesTotal)
+	c.perfDataCollectorAudio, err = pdh.NewCollector[perfDataCounterValuesAudio]("VMware Blast Audio Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Audio collector: %w", err)
 	}
@@ -330,7 +330,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorCDR, err = pdh.NewCollector[perfDataCounterValuesCDR]("Blast CDR", pdh.InstancesTotal)
+	c.perfDataCollectorCDR, err = pdh.NewCollector[perfDataCounterValuesCDR]("VMware Blast CDR Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast CDR collector: %w", err)
 	}
@@ -378,7 +378,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorClipboard, err = pdh.NewCollector[perfDataCounterValuesClipboard]("Blast Clipboard", pdh.InstancesTotal)
+	c.perfDataCollectorClipboard, err = pdh.NewCollector[perfDataCounterValuesClipboard]("VMware Blast Clipboard Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Clipboard collector: %w", err)
 	}
@@ -426,7 +426,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorHTML5MMR, err = pdh.NewCollector[perfDataCounterValuesHTML5MMR]("Blast HTML5 MMR ", pdh.InstancesTotal)
+	c.perfDataCollectorHTML5MMR, err = pdh.NewCollector[perfDataCounterValuesHTML5MMR]("VMware Blast HTML5 MMR Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast HTML5 MMR collector: %w", err)
 	}
@@ -474,7 +474,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorImaging, err = pdh.NewCollector[perfDataCounterValuesImaging]("Blast HTML5 MMR", pdh.InstancesTotal)
+	c.perfDataCollectorImaging, err = pdh.NewCollector[perfDataCounterValuesImaging]("VMware Blast Imaging Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Imaging collector: %w", err)
 	}
@@ -576,7 +576,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorOtherFeature, err = pdh.NewCollector[perfDataCounterValuesOtherFeature]("Blast Other Feature", pdh.InstancesTotal)
+	c.perfDataCollectorOtherFeature, err = pdh.NewCollector[perfDataCounterValuesOtherFeature]("VMware Blast Other Feature Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Other Feature collector: %w", err)
 	}
@@ -624,7 +624,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorPrinting, err = pdh.NewCollector[perfDataCounterValuesPrinting]("Blast Printing", pdh.InstancesTotal)
+	c.perfDataCollectorPrinting, err = pdh.NewCollector[perfDataCounterValuesPrinting]("VMware Blast Printing Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Printing collector: %w", err)
 	}
@@ -672,7 +672,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorRdeServer, err = pdh.NewCollector[perfDataCounterValuesRdeServer]("Blast RdeServer", pdh.InstancesTotal)
+	c.perfDataCollectorRdeServer, err = pdh.NewCollector[perfDataCounterValuesRdeServer]("VMware Blast RdeServer Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast RdeServer collector: %w", err)
 	}
@@ -720,7 +720,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorRTAV, err = pdh.NewCollector[perfDataCounterValuesRTAV]("Blast RTAV", pdh.InstancesTotal)
+	c.perfDataCollectorRTAV, err = pdh.NewCollector[perfDataCounterValuesRTAV]("VMware Blast RTAV Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast RTAV collector: %w", err)
 	}
@@ -768,7 +768,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorSDR, err = pdh.NewCollector[perfDataCounterValuesSDR]("Blast SDR", pdh.InstancesTotal)
+	c.perfDataCollectorSDR, err = pdh.NewCollector[perfDataCounterValuesSDR]("VMware Blast SDR Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast SDR collector: %w", err)
 	}
@@ -816,7 +816,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorSerialPortandScanner, err = pdh.NewCollector[perfDataCounterValuesSerialPortandScanner]("Blast Serial Port and Scanner", pdh.InstancesTotal)
+	c.perfDataCollectorSerialPortandScanner, err = pdh.NewCollector[perfDataCounterValuesSerialPortandScanner]("VMware Blast Serial Port and Scanner Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Serial Port and Scanner collector: %w", err)
 	}
@@ -864,7 +864,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorSession, err = pdh.NewCollector[perfDataCounterValuesSession]("Blast Session", pdh.InstancesTotal)
+	c.perfDataCollectorSession, err = pdh.NewCollector[perfDataCounterValuesSession]("VMware Blast Session Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Session collector: %w", err)
 	}
@@ -972,7 +972,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorSmartCard, err = pdh.NewCollector[perfDataCounterValuesSmartCard]("Blast Smart Card", pdh.InstancesTotal)
+	c.perfDataCollectorSmartCard, err = pdh.NewCollector[perfDataCounterValuesSmartCard]("VMware Blast Smart Card Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Smart Card collector: %w", err)
 	}
@@ -1020,7 +1020,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorUSB, err = pdh.NewCollector[perfDataCounterValuesUSB]("Blast USB", pdh.InstancesTotal)
+	c.perfDataCollectorUSB, err = pdh.NewCollector[perfDataCounterValuesUSB]("VMware Blast USB Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast USB collector: %w", err)
 	}
@@ -1068,7 +1068,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorViewScanner, err = pdh.NewCollector[perfDataCounterValuesViewScanner]("Blast View Scanner", pdh.InstancesTotal)
+	c.perfDataCollectorViewScanner, err = pdh.NewCollector[perfDataCounterValuesViewScanner]("VMware Blast View Scanner Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast View Scanner collector: %w", err)
 	}
@@ -1116,7 +1116,7 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 		nil,
 	)
 
-	c.perfDataCollectorWindowsMediaMMR, err = pdh.NewCollector[perfDataCounterValuesWindowsMediaMMR]("Blast Windows Media MMR", pdh.InstancesTotal)
+	c.perfDataCollectorWindowsMediaMMR, err = pdh.NewCollector[perfDataCounterValuesWindowsMediaMMR]("VMware Blast Windows Media MMR Counters", pdh.InstancesTotal)
 	if err != nil {
 		return fmt.Errorf("failed to create Blast Windows Media MMR collector: %w", err)
 	}
