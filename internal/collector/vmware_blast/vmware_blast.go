@@ -1290,13 +1290,13 @@ func (c *Collector) collectAudio(ch chan<- prometheus.Metric) error {
 	
 	err := c.perfDataCollectorAudio.Collect(&c.perfDataObjectAudio)
 	if err != nil {
-		logger.Error("Failed to collect VMware Blast Audio metrics", "error", err)
+		logger.Debug("Failed to collect VMware Blast Audio metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Audio metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectAudio) == 0 {
-		logger.Error("No VMware Blast Audio metrics available")
-		return fmt.Errorf("no Blast Audio metrics available")
+		logger.Debug("No VMware Blast Audio metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1345,13 +1345,18 @@ func (c *Collector) collectAudio(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectCdr(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast CDR metrics")
+	
 	err := c.perfDataCollectorCDR.Collect(&c.perfDataObjectCDR)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast CDR metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast CDR metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectCDR) == 0 {
-		return fmt.Errorf("no Blast CDR metrics available")
+		logger.Debug("No VMware Blast CDR metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1400,13 +1405,18 @@ func (c *Collector) collectCdr(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectClipboard(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Clipboard metrics")
+	
 	err := c.perfDataCollectorClipboard.Collect(&c.perfDataObjectClipboard)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast Clipboard metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Clipboard metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectClipboard) == 0 {
-		return fmt.Errorf("no Blast Clipboard metrics available")
+		logger.Debug("No VMware Blast Clipboard metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1455,13 +1465,18 @@ func (c *Collector) collectClipboard(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectHtml5Mmr(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast HTML5 MMR metrics")
+	
 	err := c.perfDataCollectorHTML5MMR.Collect(&c.perfDataObjectHTML5MMR)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast HTML5 MMR metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast HTML5 MMR metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectHTML5MMR) == 0 {
-		return fmt.Errorf("no Blast HTML5 MMR metrics available")
+		logger.Debug("No VMware Blast HTML5 MMR metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1510,13 +1525,18 @@ func (c *Collector) collectHtml5Mmr(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectImaging(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Imaging metrics")
+	
 	err := c.perfDataCollectorImaging.Collect(&c.perfDataObjectImaging)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast Imaging metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Imaging metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectImaging) == 0 {
-		return fmt.Errorf("no Blast Imaging metrics available")
+		logger.Debug("No VMware Blast Imaging metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1619,13 +1639,18 @@ func (c *Collector) collectImaging(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectOtherFeature(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Other Feature metrics")
+	
 	err := c.perfDataCollectorOtherFeature.Collect(&c.perfDataObjectOtherFeature)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast Other Feature metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Other Feature metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectOtherFeature) == 0 {
-		return fmt.Errorf("no Blast Other Feature metrics available")
+		logger.Debug("No VMware Blast Other Feature metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1674,13 +1699,18 @@ func (c *Collector) collectOtherFeature(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectPrinting(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Printing metrics")
+	
 	err := c.perfDataCollectorPrinting.Collect(&c.perfDataObjectPrinting)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast Printing metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Printing metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectPrinting) == 0 {
-		return fmt.Errorf("no Blast Printing metrics available")
+		logger.Debug("No VMware Blast Printing metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1729,13 +1759,18 @@ func (c *Collector) collectPrinting(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectRdeServer(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast RdeServer metrics")
+	
 	err := c.perfDataCollectorRdeServer.Collect(&c.perfDataObjectRdeServer)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast RdeServer metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast RdeServer metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectRdeServer) == 0 {
-		return fmt.Errorf("no Blast RdeServer metrics available")
+		logger.Debug("No VMware Blast RdeServer metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1784,13 +1819,18 @@ func (c *Collector) collectRdeServer(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectRtav(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast RTAV metrics")
+	
 	err := c.perfDataCollectorRTAV.Collect(&c.perfDataObjectRTAV)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast RTAV metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast RTAV metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectRTAV) == 0 {
-		return fmt.Errorf("no Blast RTAV metrics available")
+		logger.Debug("No VMware Blast RTAV metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1839,13 +1879,18 @@ func (c *Collector) collectRtav(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectSdr(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast SDR metrics")
+	
 	err := c.perfDataCollectorSDR.Collect(&c.perfDataObjectSDR)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast SDR metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast SDR metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectSDR) == 0 {
-		return fmt.Errorf("no Blast SDR metrics available")
+		logger.Debug("No VMware Blast SDR metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1894,13 +1939,18 @@ func (c *Collector) collectSdr(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectSerialPortandScanner(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Serial Port and Scanner metrics")
+	
 	err := c.perfDataCollectorSerialPortandScanner.Collect(&c.perfDataObjectSerialPortandScanner)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast Serial Port and Scanner metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Serial Port and Scanner metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectSerialPortandScanner) == 0 {
-		return fmt.Errorf("no Blast Serial Port and Scanner metrics available")
+		logger.Debug("No VMware Blast Serial Port and Scanner metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -1949,13 +1999,18 @@ func (c *Collector) collectSerialPortandScanner(ch chan<- prometheus.Metric) err
 }
 
 func (c *Collector) collectSession(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Session metrics")
+	
 	err := c.perfDataCollectorSession.Collect(&c.perfDataObjectSession)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast Session metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Session metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectSession) == 0 {
-		return fmt.Errorf("no Blast Session metrics available")
+		logger.Debug("No VMware Blast Session metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -2064,13 +2119,18 @@ func (c *Collector) collectSession(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectSmartCard(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Smart Card metrics")
+	
 	err := c.perfDataCollectorSmartCard.Collect(&c.perfDataObjectSmartCard)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast Smart Card metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Smart Card metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectSmartCard) == 0 {
-		return fmt.Errorf("no Blast Smart Card metrics available")
+		logger.Debug("No VMware Blast Smart Card metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -2119,13 +2179,18 @@ func (c *Collector) collectSmartCard(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectUsb(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast USB metrics")
+	
 	err := c.perfDataCollectorUSB.Collect(&c.perfDataObjectUSB)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast USB metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast USB metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectUSB) == 0 {
-		return fmt.Errorf("no Blast USB metrics available")
+		logger.Debug("No VMware Blast USB metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -2174,13 +2239,18 @@ func (c *Collector) collectUsb(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectViewScanner(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast View Scanner metrics")
+	
 	err := c.perfDataCollectorViewScanner.Collect(&c.perfDataObjectViewScanner)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast View Scanner metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast View Scanner metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectViewScanner) == 0 {
-		return fmt.Errorf("no Blast View Scanner metrics available")
+		logger.Debug("No VMware Blast View Scanner metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
@@ -2229,13 +2299,18 @@ func (c *Collector) collectViewScanner(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectWindowsMediaMmr(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Windows Media MMR metrics")
+	
 	err := c.perfDataCollectorWindowsMediaMMR.Collect(&c.perfDataObjectWindowsMediaMMR)
 	if err != nil {
+		logger.Debug("Failed to collect VMware Blast Windows Media MMR metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Windows Media MMR metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectWindowsMediaMMR) == 0 {
-		return fmt.Errorf("no Blast Windows Media MMR metrics available")
+		logger.Debug("No VMware Blast Windows Media MMR metrics available - this is normal if no sessions are active")
+		return nil // Return nil instead of an error when no data is available
 	}
 
 	ch <- prometheus.MustNewConstMetric(
