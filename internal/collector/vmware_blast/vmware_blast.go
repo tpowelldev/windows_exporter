@@ -1172,14 +1172,17 @@ func (c *Collector) Build(_ *slog.Logger, _ *mi.Session) error {
 func (c *Collector) Collect(ch chan<- prometheus.Metric) error {
 	errs := make([]error, 0, 16)
 	collectCount := 0
+	logger := slog.Default()
 
 	// Try to collect each metric type, but don't fail the entire collection if one type fails
 	// This is important for VMware Blast where not all counter types may be available
 	
 	if err := c.collectAudio(ch); err != nil {
 		errs = append(errs, fmt.Errorf("failed collecting blast audio metrics: %w", err))
+		logger.Debug("Failed collecting VMware Blast audio metrics", "error", err)
 	} else {
 		collectCount++
+		logger.Debug("Successfully collected VMware Blast audio metrics")
 	}
 
 	if err := c.collectCdr(ch); err != nil {
@@ -1282,12 +1285,17 @@ func (c *Collector) Collect(ch chan<- prometheus.Metric) error {
 }
 
 func (c *Collector) collectAudio(ch chan<- prometheus.Metric) error {
+	logger := slog.Default()
+	logger.Debug("Collecting VMware Blast Audio metrics")
+	
 	err := c.perfDataCollectorAudio.Collect(&c.perfDataObjectAudio)
 	if err != nil {
+		logger.Error("Failed to collect VMware Blast Audio metrics", "error", err)
 		return fmt.Errorf("failed to collect Blast Audio metrics: %w", err)
 	}
 
 	if len(c.perfDataObjectAudio) == 0 {
+		logger.Error("No VMware Blast Audio metrics available")
 		return fmt.Errorf("no Blast Audio metrics available")
 	}
 
